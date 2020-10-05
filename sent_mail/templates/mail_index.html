@@ -1,0 +1,29 @@
+{% extends 'master.html' %}
+{% block head %}
+    <title>sent mail from here</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% for message in messages %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <form action="{% url 'mail:index' %}" method="post" class="col-12 bg-light rounded shadow-sm p-2">
+                {% csrf_token %}
+
+                <input type="email" required name="to_email" class="form-control mt-2"
+                       placeholder="receiver email address">
+                <input type="text" name="subject" class="form-control mt-2" placeholder="Subject">
+                <textarea name="message" id="message" style="width: 100%;min-height: 150px" placeholder="Your messages"
+                          class="form-control mt-2"></textarea>
+                <button class="btn btn-primary mt-3">Sent now</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

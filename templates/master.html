@@ -13,6 +13,14 @@
     {% endblock %}
 </head>
 <body>
+<ul>
+    <li>
+        <a href="{% url 'todo:index' %}">Todo</a>
+    </li>
+    <li>
+        <a href="{% url 'mail:index' %}">Mail</a>
+    </li>
+</ul>
     {% block body %}
     
     {% endblock %}
